@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.11";
+    # sops-nix.url =  "github:Mic92/sops-nix";
   };
 
   outputs = inputs @ {
@@ -32,8 +33,10 @@
           inherit inputs;
         };
         modules = [
+          # inputs.sops-nix.nixosModules.sops
           ./system/modules/gen/genModules.nix
           # ./hosts/persephone/configuration.nix
+          ./system/modules/games/minecraftVanilla.nix
         ];
       };
     };
